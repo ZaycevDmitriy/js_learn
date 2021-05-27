@@ -1,13 +1,18 @@
-// в практике набор переменных можно так объявлять?
-// или лучше перед каждой переменной писать let/const
+const money = 45000; // Доход за месяц
+const income = 5000;  // дополнительный доход
+const ddExpenses = 'Учёба, Коммуналка, Транспорт'; // дополнительные расходы через запятую
+const deposit = false;
+const mission = 500000; //сумма которую нужно накопить
+const period = 10; // период от 1 до 12 (месяцев)
 
-let money = 5,
-  income = 5,
-  ddExpenses = 'func',
-  deposit = [],
-  mission = {},
-  period = 0;
+console.log(typeof money);
+console.log(typeof income);
+console.log(typeof ddExpenses);
+console.log(`Период равен ${period} месяцев`);
+console.log(`Цель заработать ${mission} рублей`);
 
-console.log('Hello world');
+const arrExpenses = ddExpenses.toLowerCase().split(', ');
+console.log(arrExpenses);
 
-alert('Hello world');
+const budgetDay = money / 30; // дневной бюджет
+console.log(budgetDay);
