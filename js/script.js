@@ -34,15 +34,13 @@ console.log(`Цель заработать ${mission} рублей`);
 console.log(budgetDay);
 console.log(`Бюджет на месяц: ${budgetMonth}`);
 
-if (budgetDay >= 1200) {
-  console.log('У вас высокий уровень дохода');
-} else if (budgetDay >= 600 && budgetDay < 1200) {
-  console.log('У вас средний уровень дохода');
-} else if (budgetDay < 600 && budgetDay >= 0) {
-  console.log('К сожалению у вас уровень дохода ниже среднего');
-} else {
-  console.log('Что то пошло не так');
-}
+const HIGH_DALIY_INCOME = 1200;
+const AVERAGE_DAILY_INCOME = 600;
+
+if (budgetDay >= HIGH_DALIY_INCOME) console.log('У вас высокий уровень дохода');
+if (budgetDay >= AVERAGE_DAILY_INCOME && budgetDay < HIGH_DALIY_INCOME) console.log('У вас средний уровень дохода');
+if (budgetDay < AVERAGE_DAILY_INCOME && budgetDay >= 0) console.log('К сожалению у вас уровень дохода ниже среднего');
+if (budgetDay < 0) console.log('Что то пошло не так');
 
 const arrExpenses = addExpenses.toLowerCase().split(',');
 console.log(arrExpenses.map(item => item.trim()));
