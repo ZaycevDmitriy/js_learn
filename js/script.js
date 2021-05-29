@@ -1,11 +1,13 @@
 'use strict'
+const HIGH_DALIY_INCOME = 1200;
+const AVERAGE_DAILY_INCOME = 600;
 // Доход за месяц
 const money = +prompt('Ваш месячный доход?', '45000');
 // дополнительный доход
 const income = 'фриланс';
 // дополнительные расходы через запятую
 const addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
-  'игры, проездной, кредит');
+  'Игры, Проездной, Кредит');
 
 const deposit = confirm('Есть ли у вас депозит в банке?');
 //сумма которую нужно накопить
@@ -16,14 +18,14 @@ const amount1 = +prompt('Во сколько это обойдется?', '10000
 const expenses2 = prompt('Введите обязательную статью расходов?', 'Питание');
 const amount2 = +prompt('Во сколько это обойдется?', '15000');
 
-// дневной бюджет
-const budgetDay = Math.floor(money / 30); 
-
 // Вычисляем бюджет на месяц
 const budgetMonth = money - (amount1 + amount2);
 
 //за сколько месяцев будет достигнута цель
 const period = Math.ceil(mission / budgetMonth);
+
+// дневной бюджет
+const budgetDay = Math.floor(budgetMonth / 30);
 
 console.log(typeof money);
 console.log(typeof income);
@@ -31,11 +33,8 @@ console.log(typeof deposit);
 console.log(addExpenses.length);
 console.log(`Период равен ${period} месяцев`);
 console.log(`Цель заработать ${mission} рублей`);
-console.log(budgetDay);
+console.log(`Бюджет на день ${budgetDay}`);
 console.log(`Бюджет на месяц: ${budgetMonth}`);
-
-const HIGH_DALIY_INCOME = 1200;
-const AVERAGE_DAILY_INCOME = 600;
 
 if (budgetDay >= HIGH_DALIY_INCOME) console.log('У вас высокий уровень дохода');
 if (budgetDay >= AVERAGE_DAILY_INCOME && budgetDay < HIGH_DALIY_INCOME) console.log('У вас средний уровень дохода');
