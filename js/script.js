@@ -1,5 +1,5 @@
 'use strict'
-const HIGH_DALIY_INCOME = 1200;
+const HIGH_DAILY_INCOME = 1200;
 const AVERAGE_DAILY_INCOME = 600;
 // Доход за месяц
 const money = +prompt('Ваш месячный доход?', '45000');
@@ -36,8 +36,8 @@ console.log(`Цель заработать ${mission} рублей`);
 console.log(`Бюджет на день ${budgetDay}`);
 console.log(`Бюджет на месяц: ${budgetMonth}`);
 
-if (budgetDay >= HIGH_DALIY_INCOME) console.log('У вас высокий уровень дохода');
-if (budgetDay >= AVERAGE_DAILY_INCOME && budgetDay < HIGH_DALIY_INCOME) console.log('У вас средний уровень дохода');
+if (budgetDay >= HIGH_DAILY_INCOME) console.log('У вас высокий уровень дохода');
+if (budgetDay >= AVERAGE_DAILY_INCOME && budgetDay < HIGH_DAILY_INCOME) console.log('У вас средний уровень дохода');
 if (budgetDay < AVERAGE_DAILY_INCOME && budgetDay >= 0) console.log('К сожалению у вас уровень дохода ниже среднего');
 if (budgetDay < 0) console.log('Что то пошло не так');
 
