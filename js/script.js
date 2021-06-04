@@ -51,9 +51,10 @@ const appData = {
   },
 // Вычисляем сумма всех обязательных расходов за месяц
   getExpensesMonth: function () {
-    Object.values(appData.expenses).forEach(item => {
-      appData.expensesMonth += item;
-    });
+    appData.expensesMonth = 0;
+    for (let item in appData.expenses) {
+      appData.expensesMonth += appData.expenses[item];
+    }
     return appData.expensesMonth;
   },
 
