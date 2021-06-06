@@ -1,4 +1,19 @@
 'use strict';
+const buttonStart = document.getElementById('start');
+const buttonIncomeAdd = document.getElementsByTagName('button')[0];
+const buttonExpensesAdd = document.getElementsByTagName('button')[1];
+const depositCheck = document.querySelector('#deposit-check');
+const inputAdditionalIncomeItems = document.querySelectorAll('.additional_income-item');
+const outValues = document.querySelectorAll('[class*="-value"]');
+const salaryAmount = document.querySelector('.salary-amount');
+const inputIncomeTitle = document.querySelector('.income-items .income-title');
+const inputIncomeAmount = document.querySelector('.income-amount');
+const inputExpensesTitle = document.querySelector('.expenses-items .expenses-title');
+const inputExpensesAmount = document.querySelector('.expenses-amount');
+const inputAdditionalExpensesItem = document.querySelector('.additional_expenses-item');
+const inputTargetAmount = document.querySelector('.target-amount');
+const inputPeriodSelect = document.querySelector('.period-select');
+
 const isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n); // если число то функция вернет true
 }
