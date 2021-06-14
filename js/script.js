@@ -178,6 +178,7 @@ const appData = {
   },
 };
 
+//проверяем на пустую строку инпут Месячный доход 
 if (salaryAmount.value === '') {
   buttonStart.disabled = true;
 }
