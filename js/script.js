@@ -19,9 +19,7 @@ const inputAdditionalExpensesItem = document.querySelector('.additional_expenses
 const inputTargetAmount = document.querySelector('.target-amount');
 const inputPeriodSelect = document.querySelector('.period-select');
 const periodAmount = document.querySelector('.period-amount');
-const inputTextAll = document.querySelectorAll('input[type=text]');
 const btnPlusAll = document.querySelectorAll('.btn_plus');
-
 
 const isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n); // если число то функция вернет true
@@ -201,7 +199,7 @@ const appData = {
   },
 
   blockInput: function () {
-    inputTextAll.forEach((input) => {
+    document.querySelectorAll('input[type=text]').forEach((input) => {
       input.disabled = true;
     });
     btnPlusAll.forEach((btn) => {
@@ -223,7 +221,19 @@ const appData = {
     this.budgetMonth = 0;
     this.expensesMonth = 0;
 
-    inputTextAll.forEach((input) => {
+    document.querySelectorAll('.expenses-items').forEach((item, index) => {
+      if (index > 0) item.remove();
+    });
+
+    buttonExpensesAdd.style.display = 'block';
+
+    document.querySelectorAll('.income-items').forEach((item, index) => {
+      if (index > 0) item.remove();
+    });
+
+    buttonIncomeAdd.style.display = 'block';
+
+    document.querySelectorAll('input[type=text]').forEach((input) => {
       input.disabled = false;
       input.value = '';
     });
