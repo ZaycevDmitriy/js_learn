@@ -1,4 +1,7 @@
 'use strict';
+const HIGH_DAILY_INCOME = 1200;
+const AVERAGE_DAILY_INCOME = 600;
+
 const buttonStart = document.getElementById('start');
 const buttonCancel = document.getElementById('cancel');
 const buttonIncomeAdd = document.querySelector('.income_add');
@@ -24,10 +27,6 @@ const btnPlusAll = document.querySelectorAll('.btn_plus');
 const isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n); // если число то функция вернет true
 };
-
-const HIGH_DAILY_INCOME = 1200;
-const AVERAGE_DAILY_INCOME = 600;
-
 const AppData = function () {
   this.income = {};
   this.incomeMonth = 0;
@@ -41,11 +40,12 @@ const AppData = function () {
   this.budgetDay = 0;
   this.budgetMonth = 0;
   this.expensesMonth = 0;
+
+  this.eventListeners();
 };
 
 AppData.prototype.start = function () {
   this.budget = +salaryAmount.value;
-  salaryAmount.value = '';
 
   this.getExpenses();
   this.getIncome();
@@ -53,7 +53,6 @@ AppData.prototype.start = function () {
   this.getBudget();
   this.getAddExpenses();
   this.getAddIncome();
-
   this.showResult();
   this.blockInput();
   buttonStart.style.display = 'none';
@@ -67,7 +66,6 @@ AppData.prototype.getAddIncome = function () {
     if (itemValue !== '') {
       this.addIncome.push(itemValue);
     }
-    item.value = '';
   });
 };
 
@@ -90,8 +88,6 @@ AppData.prototype.getIncome = function () {
     if (itemIncome !== '' && cashIncome !== '') {
       this.income[itemIncome] = +cashIncome;
     }
-    item.querySelector('.income-title').value = '';
-    item.querySelector('.income-amount').value = '';
   }
 
   this.incomeMonth = 0;
@@ -121,8 +117,6 @@ AppData.prototype.getExpenses = function () {
     if (itemExpenses !== '' && cashExpenses !== '') {
       this.expenses[itemExpenses] = +cashExpenses;
     }
-    item.querySelector('.expenses-title').value = '';
-    item.querySelector('.expenses-amount').value = '';
   }
 };
 
@@ -135,7 +129,6 @@ AppData.prototype.getAddExpenses = function () {
       this.addExpenses.push(item);
     }
   });
-  inputAdditionalExpensesItem.value = '';
 };
 
 // Вычисляем сумма всех обязательных расходов за месяц
@@ -157,7 +150,6 @@ AppData.prototype.getBudget = function () {
 
 AppData.prototype.getTargetMonth = function () {
   const targetMonth = Math.ceil(inputTargetAmount.value / this.budgetMonth);
-  inputTargetAmount.value = '';
   return targetMonth;
 };
 
@@ -249,9 +241,12 @@ AppData.prototype.reset = function () {
 
   buttonStart.style.display = 'block';
   buttonCancel.style.display = 'none';
+
+  this.checkSalary();
 };
 
 //проверяем на пустую строку инпут Месячный доход
+
 AppData.prototype.checkSalary = function () {
   buttonStart.disabled = salaryAmount.value.trim() === '';
   buttonStart.disabled = !isNumber(salaryAmount.value);
@@ -268,7 +263,3 @@ AppData.prototype.eventListeners = function () {
 };
 
 const appData = new AppData();
-
-console.log(appData);
-
-appData.eventListeners();
