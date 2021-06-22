@@ -239,10 +239,10 @@ class AppData {
       buttonStart.disabled = true;
       depositPercent.value = 0;
       depositPercent.style.display = 'inline-block';
-      depositPercent.addEventListener('change', appData.checkPercent);
-      appData.checkPercent();
+      depositPercent.addEventListener('change', checkPercent.apply(AppData);
+      checkPercent.apply(AppData);
     } else {
-      depositPercent.removeEventListener('change', appData.checkPercent);
+      depositPercent.removeEventListener('change', appData.checkPercent.apply(AppData));
       depositPercent.style.display = 'none';
       depositPercent.value = valueSelect;
     }
