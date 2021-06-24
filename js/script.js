@@ -92,7 +92,6 @@ class AppData {
     cloneItems.querySelector(`.${startStr}-amount`).value = '';
     element.before(cloneItems);
     if (count + 1 === 3) element.style.display = 'none';
-    console.log(cloneItems);
   }
 
   getAddExpInc() {
@@ -212,6 +211,10 @@ class AppData {
     buttonStart.style.display = 'block';
     buttonCancel.style.display = 'none';
 
+    depositCheck.checked = false;
+    this.depositHandler();
+    this.changePercent();
+
     this.checkSalary();
   }
 
@@ -224,25 +227,22 @@ class AppData {
 
   checkPercent() {
     if (isNumber(depositPercent.value) && depositPercent.value <= 100) {
-      buttonStart.disabled = false;
+      return;
     } else {
+      alert('Введите число в поле от 0 до 100');
       depositPercent.value = 0;
-      alert('Введите число от 0 до 100');
-      buttonStart.disabled = true;
     }
   }
 
-  changePercent() {
-    const valueSelect = this.value;
-    console.log(this);
+  changePercent = () => {
+    const valueSelect = depositBank.value;
     if (valueSelect === 'other') {
-      buttonStart.disabled = true;
       depositPercent.value = 0;
       depositPercent.style.display = 'inline-block';
-      depositPercent.addEventListener('change', checkPercent.apply(AppData);
-      checkPercent.apply(AppData);
+      depositPercent.addEventListener('change', this.checkPercent);
+      this.checkPercent();
     } else {
-      depositPercent.removeEventListener('change', appData.checkPercent.apply(AppData));
+      depositPercent.removeEventListener('change', this.checkPercent);
       depositPercent.style.display = 'none';
       depositPercent.value = valueSelect;
     }
@@ -257,6 +257,7 @@ class AppData {
     } else {
       depositBank.style.display = 'none';
       depositAmount.style.display = 'none';
+      depositPercent.style.display = 'none';
       depositBank.value = '';
       depositAmount.value = '';
       this.deposit = false;
